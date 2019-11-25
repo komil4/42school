@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/10 18:33:17 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/10 20:18:28 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_putnbr_fd(int nb, int fd)
 {
-	t_element *element;
+	unsigned int	nbr;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	if (nb < 0)
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		ft_putchar_fd('-', fd);
+		nbr = (unsigned int)(nb * -1);
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	else
+		nbr = (unsigned int)nb;
+	if (nbr >= 10)
+		ft_putnbr_fd(nbr / 10, fd);
+	ft_putchar_fd((char)(nbr % 10 + 48), fd);
 }

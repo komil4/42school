@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/09 14:13:42 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/18 23:26:24 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	t_element *element;
+	size_t count_src;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	count_src = 0;
+	while (src[count_src] != '\0' && count_src < len)
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		dst[count_src] = src[count_src];
+		count_src++;
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	while (count_src < len)
+	{
+		dst[count_src] = '\0';
+		count_src++;
+	}
+	return (dst);
 }

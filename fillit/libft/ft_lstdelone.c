@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/19 22:21:06 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/19 22:23:05 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	t_element *element;
-
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	if (alst && *alst && del)
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		del((*alst)->content, (*alst)->content_size);
+		free(*alst);
+		*alst = NULL;
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
 }

@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/20 18:48:16 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/20 18:48:56 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-int main(int argc, char **argv)
+char	*ft_strcpy(char *dest, char *src)
 {
-	t_element *element;
+	int count_src;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	count_src = 0;
+	while (src[count_src] != '\0')
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		dest[count_src] = src[count_src];
+		count_src++;
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	dest[count_src] = '\0';
+	return (dest);
 }

@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/09 14:15:37 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/18 21:10:26 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-int main(int argc, char **argv)
+int	ft_strncmp(char *s1, char *s2, int n)
 {
-	t_element *element;
+	int i;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	i = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		if (s1[i] - s2[i] > 0 || s1[i] - s2[i] < 0)
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	return (0);
 }

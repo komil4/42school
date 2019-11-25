@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/05 20:41:18 by bhoth             #+#    #+#             */
+/*   Updated: 2019/10/15 20:22:50 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+char	*ft_strdup(const char *s1)
 {
-	t_element *element;
+	char	*dest;
+	int		i;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	i = 0;
+	if ((dest = (char*)malloc(sizeof(char) * ft_strlen(s1) + 1)))
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		while (s1[i] != '\0')
+		{
+			dest[i] = (char)s1[i];
+			i++;
+		}
+		dest[i] = '\0';
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	return (dest);
 }

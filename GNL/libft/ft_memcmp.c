@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/18 23:13:45 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/18 23:20:34 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_element *element;
+	size_t			i;
+	unsigned char	*str;
+	unsigned char	*str2;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	if (n == 0)
+		return (0);
+	str = (unsigned char*)s1;
+	str2 = (unsigned char*)s2;
+	i = 0;
+	while (str[i] == str2[i] && i < n - 1)
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		i++;
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	return ((int)(str[i] - str2[i]));
 }

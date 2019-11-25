@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/17 21:32:20 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/17 21:32:25 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	t_element *element;
+	size_t			i;
+	unsigned char	*ptr_dst;
+	unsigned char	*ptr_src;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	ptr_dst = (unsigned char*)dst;
+	ptr_src = (unsigned char*)src;
+	i = 0;
+	while (i < n)
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		ptr_dst[i] = ptr_src[i];
+		if (ptr_dst[i] == (unsigned char)c)
+			return ((void*)(dst + i + 1));
+		++i;
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	return (NULL);
 }

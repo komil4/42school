@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/10/08 20:46:16 by bhoth             #+#    #+#             */
+/*   Updated: 2019/10/15 20:50:59 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int main(int argc, char **argv)
+# define BUFF_SIZE 32
+# include <stdlib.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
+# include "libft/libft.h"
+
+typedef struct		s_element
 {
-	t_element *element;
+	int					fd;
+	char				*buf;
+	struct s_element	*next;
+}					t_element;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
-	{
-		return (-1);
-		//write("Incorrect file!", 15);
-	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
-}
+int					get_next_line(const int fd, char **line);
+
+#endif

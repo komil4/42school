@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/17 21:33:55 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/17 21:34:01 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	t_element *element;
+	size_t			i;
+	unsigned char	*ptr;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
-	{
-		return (-1);
-		//write("Incorrect file!", 15);
-	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	i = 0;
+	ptr = (unsigned char*)s;
+	while (++i <= n)
+		if (*(ptr++) == (unsigned char)c)
+			return ((void*)--ptr);
+	return (0);
 }

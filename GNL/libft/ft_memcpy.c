@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/09 19:15:31 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/18 23:12:19 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	t_element *element;
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	i = 0;
+	str1 = (unsigned char *)dst;
+	str2 = (unsigned char *)src;
+	while (i != n)
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		str1[i] = str2[i];
+		i++;
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	return (dst);
 }

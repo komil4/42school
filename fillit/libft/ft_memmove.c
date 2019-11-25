@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/17 20:13:40 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/18 23:12:42 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	t_element *element;
+	size_t				i;
+	unsigned char		*ptr;
+	const unsigned char	*ptr2;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
-	{
-		return (-1);
-		//write("Incorrect file!", 15);
-	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	ptr = (unsigned char*)dst;
+	ptr2 = (unsigned char*)src;
+	i = 0;
+	if (ptr2 < ptr)
+		while (++i <= len)
+			ptr[len - i] = ptr2[len - i];
+	else
+		while (len-- > 0)
+			*(ptr++) = *(ptr2++);
+	return (dst);
 }

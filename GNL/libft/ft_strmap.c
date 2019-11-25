@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/10 19:16:51 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/19 20:54:56 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	t_element *element;
+	char	*res;
+	int		i;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	i = 0;
+	res = NULL;
+	if (s && f)
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		while (s[i])
+			i++;
+		res = (char *)malloc(i + 1);
+		if (!res)
+			return (NULL);
+		i = 0;
+		while (s[i])
+		{
+			res[i] = f(s[i]);
+			i++;
+		}
+		res[i] = '\0';
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	return (res);
 }

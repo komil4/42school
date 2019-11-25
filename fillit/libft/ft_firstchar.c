@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_firstchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/10/15 20:27:07 by bhoth             #+#    #+#             */
+/*   Updated: 2019/10/15 20:28:47 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-int main(int argc, char **argv)
+unsigned int	ft_firstchar(char *str, const char *charset)
 {
-	t_element *element;
+	char			*ptr;
+	int				index;
+	unsigned int	count;
+	unsigned int	tmp;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	ptr = str;
+	count = 0;
+	while (*ptr)
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		index = 0;
+		tmp = count;
+		while (charset[index])
+			if (charset[index++] == *ptr)
+				++count;
+		if (count == tmp)
+			return (count);
+		++ptr;
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	return (count);
 }

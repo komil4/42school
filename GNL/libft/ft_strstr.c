@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/19 22:48:06 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/19 22:48:07 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+char	*ft_strstr(const char *strm, const char *needle)
 {
-	t_element *element;
+	unsigned int	i;
+	unsigned int	j;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	if (!*needle)
+		return ((char *)strm);
+	i = 0;
+	while (strm[i] != '\0')
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		if (strm[i] == needle[0])
+		{
+			j = 1;
+			while (needle[j] != '\0' && strm[i + j] == needle[j])
+				j++;
+			if (needle[j] == '\0')
+				return ((char *)&strm[i]);
+		}
+		i++;
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	return (0);
 }

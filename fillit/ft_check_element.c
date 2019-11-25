@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_element.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/25 20:49:26 by bhoth             #+#    #+#             */
+/*   Updated: 2019/11/25 21:11:44 by bhoth            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 int check_size_tetr(char **matrix)
@@ -13,7 +25,7 @@ int check_size_tetr(char **matrix)
 		{
 			j++;
 		}
-		i++
+		i++;
 	}
 	if (i != 3 || j != 3)
 		return (0);
@@ -26,6 +38,7 @@ int check_char_tetr(char **matrix)
 	int j;
 
 	i = 0;
+	j = 0;
 	while (!matrix[i][j])
 	{
 		j = 0;
@@ -45,6 +58,7 @@ int check_tetr_form(char **matrix)
 	int j;
 
 	i = 0;
+	j = 0;
 	count = 0;
 	while (matrix[i][j])
 	{
@@ -57,9 +71,8 @@ int check_tetr_form(char **matrix)
 		i++;
 	}
 	if (count >= 6)
-		return (1)
+		return (1);
 	return (0);
-
 }
 
 int count_adj(char **matrix, int i, int j)
@@ -67,14 +80,14 @@ int count_adj(char **matrix, int i, int j)
 	int count;
 
 	count = 0;
-	if (i = 0)
-		count = (matrix[i + 1][j] == "#" ? count + 1 : count);
-	if (i = 3)
-		count = (matrix[i - 1][j] == "#" ? count + 1 : count);
-	if (j = 0)
-		count = (matrix[i][j + 1] == "#" ? count + 1 : count);
-	if (j = 3)
-		count = (matrix[i][j - 1] == "#" ? count + 1 : count);
+	if (i == 0)
+		count = (matrix[i + 1][j] == '#' ? count + 1 : count);
+	if (i == 3)
+		count = (matrix[i - 1][j] == '#' ? count + 1 : count);
+	if (j == 0)
+		count = (matrix[i][j + 1] == '#' ? count + 1 : count);
+	if (j == 3)
+		count = (matrix[i][j - 1] == '#' ? count + 1 : count);
 	return (count);
 }
 
@@ -84,6 +97,7 @@ void tetr_char_replace(char **matrix)
 	int j;
 
 	i = 0;
+	j = 0;
 	while (!matrix[i][j])
 	{
 		j = 0;

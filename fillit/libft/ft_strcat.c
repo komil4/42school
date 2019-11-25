@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/20 18:49:34 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/20 18:49:35 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-int main(int argc, char **argv)
+char	*ft_strcat(char *dest, const char *src)
 {
-	t_element *element;
+	unsigned int i;
+	unsigned int j;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	i = 0;
+	while (dest[i])
+		++i;
+	j = 0;
+	while (src[j])
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		dest[i] = src[j];
+		i++;
+		++j;
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	dest[i] = '\0';
+	return (dest);
 }

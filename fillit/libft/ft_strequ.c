@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/20 18:47:56 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/20 18:47:57 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+int	ft_strequ(char const *s1, char const *s2)
 {
-	t_element *element;
+	int	a;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	a = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	while (s1[a] && s2[a])
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		if (s1[a] != s2[a])
+			return (0);
+		a++;
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
+	if (s1[a] != s2[a])
+		return (0);
 	return (1);
 }

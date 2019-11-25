@@ -1,24 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   elements.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/25 20:43:28 by bhoth             #+#    #+#             */
+/*   Updated: 2019/11/25 21:00:45 by bhoth            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 void create_elements(t_element *element, char *str)
 {
 	int			fd;
+	int 		i;
 	char		*buf;
 	t_element	*temp;
 
-	fd = open(str, O_RDONLY)
-	if(fd < 0 || fd == 1 || fd == 2)
-		return (0);	
+	fd = open(str, O_RDONLY);
+	if (fd < 0 || fd == 1 || fd == 2)
+		return;	
 	i = 0;
-	element = (*t_element)malloc(sizeof(t_element));
+	element = (t_element*)malloc(sizeof(t_element));
 	temp = element;
 	while (!get_next_line(fd, &buf))
 	{
 		if (i == 0)
-			temp = (*t_element)malloc(sizeof(t_element));
-		if (!(*buf) || buf = "")
+			temp = (t_element*)malloc(sizeof(t_element));
+		if (buf == NULL)
 		{
-			temp->next = (*t_element)malloc(sizeof(t_element));
+			temp->next = (t_element*)malloc(sizeof(t_element));
 			temp = temp->next;
 			i = 0;
 		}
@@ -30,7 +43,7 @@ void create_elements(t_element *element, char *str)
 
 int check_element(char **mas)
 {
-	if (int check_size_tetr(mas)
+	if (check_size_tetr(mas)
 		&& check_char_tetr(mas)
 		&& check_tetr_form(mas))
 	{
@@ -47,7 +60,7 @@ int check_elements(t_element *element)
 
 	i = 0;
 	temp = element;
-	while (t_element <> NULL)
+	while (temp != NULL)
 	{
 		if (check_element(temp->matrix))
 		{
@@ -65,9 +78,9 @@ void free_elements(t_element *element)
 	t_element *temp;
 
 	temp = element;
-	if (temp <> NULL)
+	if (temp != NULL)
 	{
-		if (temp->next <> NULL)
+		if (temp->next != NULL)
 			free_elements(temp->next);
 		free(temp->matrix);
 		free(temp);

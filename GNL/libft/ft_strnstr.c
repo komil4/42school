@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Created: 2019/09/20 18:47:08 by bhoth             #+#    #+#             */
+/*   Updated: 2019/09/20 20:50:42 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+char	*ft_strnstr(const char *str, const char *find, size_t len)
 {
-	t_element *element;
+	size_t i;
+	size_t j;
 
- 	element = NULL;
-	if (argc != 2)
-		return(-1);
-	create_elements(element, argv[1]);
-	if (!check_elements(element))
+	if (!*find)
+		return ((char*)str);
+	i = 0;
+	while (str[i] && i < len)
 	{
-		return (-1);
-		//write("Incorrect file!", 15);
+		j = 0;
+		if (str[i] == find[j])
+		{
+			while (i + j < len)
+			{
+				j++;
+				if (find[j] == '\0')
+					return ((char*)&str[i]);
+				if (str[i + j] != find[j])
+					break ;
+			}
+		}
+		i++;
 	}
-	//solution();
-	free_elements(element);
-	//print_sollution(*solution);
-	//free(solution);
-	return (1);
+	return (NULL);
 }
