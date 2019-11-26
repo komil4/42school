@@ -97,16 +97,12 @@ static void		fill(char **res, const char *s, char c, int cnt)
 char			**ft_strsplit(const char *s, char c)
 {
 	char	**result;
-	int		flag;
-	int		i;
 	int		wordcnt;
 
 	result = NULL;
 	if (s)
 	{
-		flag = 0;
 		wordcnt = wordcounter(s, c);
-		i = 0;
 		if ((result = (char**)malloc(sizeof(char*) * (wordcnt + 1))))
 		{
 			result[wordcnt] = NULL;

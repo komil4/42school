@@ -19,14 +19,21 @@ int main(int argc, char **argv)
  	element = NULL;
 	if (argc != 2)
 		return(-1);
-	create_elements(element, argv[1]);
+	element = create_elements(argv[1]);
+	if (element != NULL)
+	//printf("Elements created!");
+	//print_elements(element);
+	//printf("Elements created!");
 	if (!check_elements(element))
 	{
+		//printf("Elements not good!");
 		return (-1);
+		
+		//free_elements(element);
 		//write("Incorrect file!", 15);
 	}
 	//solution();
-	free_elements(element);
+	//free_elements(element);
 	//print_sollution(*solution);
 	//free(solution);
 	return (1);
