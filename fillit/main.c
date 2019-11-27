@@ -16,6 +16,7 @@ int main(int argc, char **argv)
 {
 	t_element *element;
 
+
 	
 
  	element = NULL;
