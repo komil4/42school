@@ -15,11 +15,15 @@
 int main(int argc, char **argv)
 {
 	t_element *element;
+	// "tests/invalid_sample"
 
  	element = NULL;
-	if (argc != 2)
-		return(-1);
-	element = create_elements(argv[1]);
+	//if (argc != 2)
+	//	return(-1);
+	//printf("%s", argv[1]);
+	//element = create_elements(argv[1]);
+	
+	element = create_elements("tests/invalid_sample");
 	if (element != NULL)
 	//Hello helo ehelo
 	//printf("Elements created!");
