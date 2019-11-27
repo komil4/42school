@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 		return(-1);
 	element = create_elements(argv[1]);
 	if (element != NULL)
-	//Hello world hello
+	//Hello helo ehelo
 	//printf("Elements created!");
 	//print_elements(element);
 	//printf("Elements created!");
