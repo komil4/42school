@@ -19,12 +19,12 @@ int check_size_tetr(char **matrix, t_element *temp)
 
 	i = 0;
 	j = 0;
-	while (i <= temp->rows)
+	while (i < temp->rows)
 	{
 		while (matrix[i][j])
 			j++;
 		i++;
-		if (j != 5)
+		if (j != 4)
 			return (0);
 		j = 0;
 	}

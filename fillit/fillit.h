@@ -3,7 +3,7 @@
 
 # define BUFF_SIZE 32
 # define SIDE_SIZE 4
-# define FREE_STR_GNL 13
+# define FREE_STR_GNL 0
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/stat.h>

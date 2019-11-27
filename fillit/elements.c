@@ -28,8 +28,13 @@ t_element *create_elements(char *str)
 	temp = element;
 	while (get_next_line(fd, &buf) > 0)
 	{
-		if (buf[0] == FREE_STR_GNL)
+		if (*buf == FREE_STR_GNL)
 		{
+			if (temp->matrix == NULL)
+			{
+				free_elements(element);
+				return (NULL);
+			}
 			temp->next = (t_element*)malloc(sizeof(t_element));
 			temp = temp->next;
 			i = 0;
@@ -38,8 +43,8 @@ t_element *create_elements(char *str)
 		{
 			temp->matrix = create_matrix(temp->matrix, i);
 			temp->matrix[i] = ft_strdup(buf);
-			temp->rows = i;
 			i++;
+			temp->rows = i;
 		}		
 	}
 	return (element);
@@ -47,10 +52,6 @@ t_element *create_elements(char *str)
 
 int check_element(char **mas, t_element *temp)
 {
-	printf("%i\n", check_size_tetr(mas, temp));
-	printf("%i\n", check_char_tetr(mas));
-	printf("%i\n", check_tetr_form(mas));
-	
 	if (check_size_tetr(mas, temp)
 		&& check_char_tetr(mas)
 		&& check_tetr_form(mas))

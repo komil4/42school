@@ -23,19 +23,17 @@ int main(int argc, char **argv)
 	//printf("%s", argv[1]);
 	//element = create_elements(argv[1]);
 	
-	element = create_elements("tests/invalid_sample");
-	if (element != NULL)
-	//Hello helo ehelo
-	//printf("Elements created!");
-	//print_elements(element);
-	//printf("Elements created!");
+	element = create_elements("tests/test_0");
+	if (element == NULL)
+	{	
+		printf("Error create!");
+		return (0);
+	}
 	if (!check_elements(element))
 	{
-		//printf("Elements not good!");
-		return (-1);
-		
-		//free_elements(element);
-		//write("Incorrect file!", 15);
+		free_elements(element);
+		printf("Elements not good!");
+		return (0);
 	}
 	//solution();
 	//free_elements(element);
