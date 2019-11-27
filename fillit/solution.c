@@ -13,6 +13,7 @@ t_solution *solution(t_element *element)
     char_solution = (t_solution*)malloc(sizeof(t_solution));
     char_solution->size = SIDE_SIZE;
     char_solution->map = create_char_solution_map();
+    while (find_solution(solution, element, char_solution, global_solution))
     if (find_solution(solution, element, char_solution, global_solution))
         return (global_solution);
     return (NULL);
