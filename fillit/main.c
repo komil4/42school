@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-"Hello "
-
 #include "fillit.h"
 
 int main(int argc, char **argv)
 {
 	t_element *element;
+
+	
 
  	element = NULL;
 	if (argc != 2)
