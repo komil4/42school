@@ -4,6 +4,7 @@
 # define BUFF_SIZE 32
 # define SIDE_SIZE 4
 # define FREE_STR_GNL 0
+# define SOLUTION_BUF 6
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/stat.h>
