@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_element.c                                    :+:      :+:    :+:   */
+/*   ft_check_element.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 20:49:26 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/27 22:35:21 by bhoth            ###   ########.fr       */
+/*   Updated: 2019/11/25 21:11:44 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int count_adj(char **matrix, int i, int j)
 	return (count);
 }
 
-void tetr_char_replace(char **matrix)
+void tetr_char_replace(t_element *element)
 {
 	int i;
 	int j;
@@ -104,15 +104,15 @@ void tetr_char_replace(char **matrix)
 	j = 0;
 	while (i < 4)
 	{
-		j = 0;
-		while (matrix[i][j])
+		while (j < 4)
 		{
-			if (matrix[i][j] == '#')
-				matrix[i][j] = 1;
-			if (matrix[i][j] == '.')
-				matrix[i][j] = 0;
+			if (element->matrix[i][j] == '#')
+				element->matrix[i][j] = 1;
+			if (element->matrix[i][j] == '.')
+				element->matrix[i][j] = 0;
 			j++;
 		}
+		j = 0;
 		i++;
 	}
 }

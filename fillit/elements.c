@@ -45,6 +45,7 @@ t_element *create_elements(char *str)
 			temp->matrix[i] = ft_strdup(buf);
 			i++;
 			temp->rows = i;
+			temp->next = NULL;
 		}		
 	}
 	return (element);
@@ -56,7 +57,7 @@ int check_element(char **mas, t_element *temp)
 		&& check_char_tetr(mas)
 		&& check_tetr_form(mas))
 	{
-		tetr_char_replace(mas);
+		tetr_char_replace(temp);
 		return (1);	
 	}	
 	return (0);

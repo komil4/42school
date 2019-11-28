@@ -36,7 +36,7 @@ typedef struct        s_element_g
 
 int get_next_line(const int fd, char **line);
 
-void tetr_char_replace(char **matrix);
+void tetr_char_replace(t_element *element);
 int count_adj(char **matrix, int i, int j);
 int check_tetr_form(char **matrix);
 int check_char_tetr(char **matrix);
@@ -48,4 +48,23 @@ void free_elements(t_element *element);
 void print_elements(t_element *element);
 char **create_matrix(char **matrix, int count);
 
+int get_min_solution_size(t_element *element);
+t_solution *create_new_sollution_with_copy(t_solution *solution);
+char **create_solution_map(int solution_size);
+char **create_char_solution_map(int solution_size);
+t_solution *create_solution(int solution_size);
+t_solution *create_char_solution(int solution_size);
+t_solution *solution(t_element *element, t_solution *global_solution);
+int find_solution(t_solution *solution, t_element *element,
+    t_solution *char_solution, t_solution *global_solution);
+void paste_tetr_in_solution(t_solution *solution,
+t_solution *char_sollution, t_element *element, int i, int j);
+int check_char_solution(char **map, int i, int j, int size);
+int check_solution(t_solution *solution);
+void recovery_solution(t_solution *temp_solution,
+    t_solution *solution);
+void print_solution(t_solution *solution);
+void print_solution_char(t_solution *solution);
+void free_solution(t_solution *solution);
+	
 #endif
