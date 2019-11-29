@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 	//printf("%s", argv[1]);
 	//element = create_elements(argv[1]);
 	
-	element = create_elements("tests/test_0");
+	element = create_elements("tests/test_8");
 	if (element == NULL)
 	{	
 		printf("error\n");
@@ -57,6 +57,8 @@ int main(int argc, char **argv)
 	}
 	global_solution = solution(element, global_solution);
 	print_solution(global_solution);
+	free_elements(element);
+	free_solution(global_solution);
 	//free(solution);
 	return (1);
 }

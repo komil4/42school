@@ -51,10 +51,15 @@ t_solution *solution(t_element *element, t_solution *global_solution)
     while (!(find_solution(solution, element, char_solution, global_solution)))
     {
         min_solution_size = min_solution_size + 1;
+        free_solution(solution);
+        free_solution(char_solution);
+        free_solution(global_solution);
         solution = create_solution(min_solution_size);
         char_solution = create_char_solution(min_solution_size);
         global_solution = create_char_solution(min_solution_size);
     }
+    free_solution(solution);
+    free_solution(char_solution);
     return (global_solution);
 }
 
