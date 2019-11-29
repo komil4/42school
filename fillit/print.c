@@ -17,7 +17,7 @@ void print_elements(t_element *element)
         {
             while (j < tmp->rows)
             {
-                printf("%c", (char)(tmp->matrix[i][j] + 48));
+                printf("%c", (char)(tmp->matrix[i][j]));
                 j++;
             }
             printf("\n");

@@ -41,11 +41,10 @@ t_element *create_elements(char *str)
 		}
 		else
 		{
-			temp->matrix = create_matrix(temp->matrix, i);
-			temp->matrix[i] = ft_strdup(buf);
+			temp->matrix = create_matrix(temp->matrix, i, buf);
+			temp->next = NULL;
 			i++;
 			temp->rows = i;
-			temp->next = NULL;
 		}		
 	}
 	return (element);
@@ -98,21 +97,35 @@ void free_elements(t_element *element)
 	} 	
 }
 
-char **create_matrix(char **matrix, int count)
+char **create_matrix(char **matrix, int count, char *buf)
 {
 	char **temp;
 	int i;
 
-	temp = matrix;
-	matrix = (char**)malloc(sizeof(char*) * (count + 1));
-	if (matrix == NULL)
+	temp = (char**)malloc(sizeof(char*) * (count + 1));
+	if (temp == NULL)
 		return (NULL);
 	i = 0;
 	while (i < count)
 	{
-		matrix[i] = ft_strdup(temp[i]);
+		temp[i] = ft_strdup(matrix[i]);
 		i++;
 	}
-	return (matrix);
-	//free(temp);		
+	temp[i] = ft_strdup(buf);
+	free_element_matrix(matrix, count);
+	free(matrix);
+	return (temp);
+}
+
+void free_element_matrix(char **matrix, int count)
+{
+	int i;
+
+	i = 0;
+	while (i < count)
+	{	
+		if (*matrix != NULL)
+			free(matrix[i]);
+		i++;
+	}
 }

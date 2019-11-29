@@ -46,7 +46,7 @@ int check_elements(t_element *element);
 t_element *create_elements(char *str);
 void free_elements(t_element *element);
 void print_elements(t_element *element);
-char **create_matrix(char **matrix, int count);
+char **create_matrix(char **matrix, int count, char *buf);
 
 int get_min_solution_size(t_element *element);
 t_solution *create_new_sollution_with_copy(t_solution *solution);
@@ -66,5 +66,6 @@ void recovery_solution(t_solution *temp_solution,
 void print_solution(t_solution *solution);
 void print_solution_char(t_solution *solution);
 void free_solution(t_solution *solution);
+void free_element_matrix(char **matrix, int count);
 	
 #endif

@@ -39,9 +39,8 @@ int main(int argc, char **argv)
 		printf("error\n");
 		return (0);
 	}
-	//print_elements(element);
 	global_solution = solution(element, global_solution);
-	//free_elements(element);
+	free_elements(element);
 	print_solution(global_solution);
 	//free(solution);
 	return (1);
