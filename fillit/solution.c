@@ -52,8 +52,8 @@ t_solution *solution(t_element *element, t_solution *global_solution)
     {
         min_solution_size = min_solution_size + 1;
         solution = create_solution(min_solution_size);
-        char_solution = create_solution(min_solution_size);
-        global_solution = create_solution(min_solution_size);
+        char_solution = create_char_solution(min_solution_size);
+        global_solution = create_char_solution(min_solution_size);
     }
     return (global_solution);
 }
@@ -85,16 +85,14 @@ int find_solution(t_solution *solution, t_element *element,
             recovery_solution(temp_char_sollution, char_solution);
             paste_tetr_in_solution(temp_solution, temp_char_sollution,
                 element, i, j);
-            if (check_solution(temp_solution))
-            {
-                if (find_solution(temp_solution, element->next,
+            if (check_solution(temp_solution)
+            && find_solution(temp_solution, element->next,
                     temp_char_sollution, global_solution))
                     {
                         free_solution(temp_solution);
                         free_solution(temp_char_sollution);
                         return (1);
                     }
-            }
             j++;
         }
         j = 0;  

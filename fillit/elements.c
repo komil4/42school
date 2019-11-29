@@ -112,8 +112,11 @@ char **create_matrix(char **matrix, int count, char *buf)
 		i++;
 	}
 	temp[i] = ft_strdup(buf);
-	free_element_matrix(matrix, count);
-	free(matrix);
+	if (temp != matrix)
+	{
+		free_element_matrix(matrix, count);
+		free(matrix);
+	}
 	return (temp);
 }
 

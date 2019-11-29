@@ -40,7 +40,6 @@ int main(int argc, char **argv)
 		return (0);
 	}
 	global_solution = solution(element, global_solution);
-	free_elements(element);
 	print_solution(global_solution);
 	//free(solution);
 	return (1);

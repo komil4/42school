@@ -67,5 +67,6 @@ void print_solution(t_solution *solution);
 void print_solution_char(t_solution *solution);
 void free_solution(t_solution *solution);
 void free_element_matrix(char **matrix, int count);
+void print_char_elements(t_element *element);
 	
 #endif

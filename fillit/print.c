@@ -1,5 +1,35 @@
 #include "fillit.h"
 
+void print_char_elements(t_element *element)
+{
+    t_element *tmp;
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    tmp = element;
+    if (tmp == NULL)
+        printf("null");
+    while (tmp != NULL)
+    {
+        while (i < tmp->rows)
+        {
+            while (j < tmp->rows)
+            {
+                printf("%c", (char)(tmp->matrix[i][j] + 48));
+                j++;
+            }
+            printf("\n");
+            j = 0;
+            i++;
+        }
+        printf("\n");
+        i = 0;
+        tmp = tmp->next;        
+    }
+}
+
 void print_elements(t_element *element)
 {
     t_element *tmp;
