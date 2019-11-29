@@ -12,6 +12,21 @@
 
 #include "fillit.h"
 
+int get_tetr_count(t_element *element)
+{
+    int nbr;
+    t_element *temp;
+
+    temp = element;
+    nbr = 0;
+    while (temp != NULL)
+    {
+        temp = temp->next;
+        nbr++;
+    }
+	return (nbr);
+}
+
 int main(int argc, char **argv)
 {
 	t_element *element;
@@ -33,7 +48,8 @@ int main(int argc, char **argv)
 		printf("error\n");
 		return (0);
 	}
-	if (!check_elements(element))
+	if (get_tetr_count(element) > 26
+		||!check_elements(element))
 	{
 		free_elements(element);
 		printf("error\n");
