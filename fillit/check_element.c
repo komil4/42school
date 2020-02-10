@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_element.c                                 :+:      :+:    :+:   */
+/*   check_element.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 20:49:26 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:11:44 by bhoth            ###   ########.fr       */
+/*   Updated: 2020/01/29 19:49:12 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int check_size_tetr(char **matrix, t_element *temp)
+int		check_size_tetr(char **matrix, t_element *temp)
 {
 	int i;
 	int j;
@@ -33,7 +33,7 @@ int check_size_tetr(char **matrix, t_element *temp)
 	return (1);
 }
 
-int check_char_tetr(char **matrix)
+int		check_char_tetr(char **matrix)
 {
 	int i;
 	int j;
@@ -54,32 +54,36 @@ int check_char_tetr(char **matrix)
 	return (1);
 }
 
-int check_tetr_form(char **matrix)
+int		check_tetr_form(char **matrix)
 {
 	int count;
 	int i;
 	int j;
+	int	r;
 
 	i = 0;
 	j = 0;
+	r = 0;
 	count = 0;
 	while (i < 4)
 	{
 		while (matrix[i][j])
 		{
 			if (matrix[i][j] == '#')
+			{
 				count = count + count_adj(matrix, i, j);
+				r++;
+			}
 			j++;
 		}
 		j = 0;
 		i++;
 	}
-	if (count >= 6)
-		return (1);
-	return (0);
+	i = count >= 6 && r == 4 ? 1 : 0;
+	return (i);
 }
 
-int count_adj(char **matrix, int i, int j)
+int		count_adj(char **matrix, int i, int j)
 {
 	int count;
 
@@ -95,7 +99,7 @@ int count_adj(char **matrix, int i, int j)
 	return (count);
 }
 
-void tetr_char_replace(t_element *element)
+void	tetr_char_replace(t_element *element)
 {
 	int i;
 	int j;

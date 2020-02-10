@@ -6,59 +6,58 @@
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 20:35:19 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:03:57 by bhoth            ###   ########.fr       */
+/*   Updated: 2020/02/02 19:44:02 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int get_tetr_count(t_element *element)
+int		get_tetr_count(t_element *element)
 {
-    int nbr;
-    t_element *temp;
+	int			nbr;
+	t_element	*temp;
 
-    temp = element;
-    nbr = 0;
-    while (temp != NULL)
-    {
-        temp = temp->next;
-        nbr++;
-    }
+	temp = element;
+	nbr = 0;
+	while (temp != NULL)
+	{
+		temp = temp->next;
+		nbr++;
+	}
 	return (nbr);
 }
 
-int main(int argc, char **argv)
+void	glob_sol_iteration(t_glob_sol *glob_sol)
 {
-	t_element *element;
-	t_solution *global_solution;
-	// "tests/invalid_sample"
+	glob_sol->j = 0;
+	glob_sol->i++;
+}
 
-	if (argc == 500)
-		return (0);
- 	element = NULL;
-	global_solution = NULL;
-	//if (argc != 2)
-	//	return(-1);
-	//printf("%s", argv[1]);
-	//element = create_elements(argv[1]);
-	
-	element = create_elements("tests/test_8");
-	if (element == NULL)
-	{	
-		printf("error\n");
+int		main(int argc, char **argv)
+{
+	t_element		*element;
+	t_solution		*global_solution;
+
+	if (argc != 2)
+	{
+		ft_putstr("usage: ./fillit source_file\n");
 		return (0);
 	}
-	if (get_tetr_count(element) > 26
-		||!check_elements(element))
+	global_solution = NULL;
+	element = create_elements(argv[1]);
+	if (element == NULL)
+	{
+		ft_putstr("error\n");
+		exit(0);
+	}
+	if (get_tetr_count(element) > 26 || !check_elements(element))
 	{
 		free_elements(element);
-		printf("error\n");
-		return (0);
+		ft_putstr("error\n");
+		exit(0);
 	}
 	global_solution = solution(element, global_solution);
 	print_solution(global_solution);
-	free_elements(element);
-	free_solution(global_solution);
-	//free(solution);
-	return (1);
+	exit(0);
+	return (0);
 }

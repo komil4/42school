@@ -6,7 +6,7 @@
 /*   By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 20:25:41 by bhoth             #+#    #+#             */
-/*   Updated: 2019/11/25 21:04:31 by bhoth            ###   ########.fr       */
+/*   Updated: 2020/02/02 17:18:30 by bhoth            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int				get_next_line(const int fd, char **line)
 	static t_element_g	*begin;
 	t_element_g			*tmp;
 
-	if (fd < 0 || fd == 1 || fd == 2 || line == NULL)
+	if (fd < 0 || fd > 10239 || BUFF_SIZE < 1 || BUFF_SIZE > 2147483647)
 		return (-1);
 	if (begin == NULL)
 		begin = create(fd);
