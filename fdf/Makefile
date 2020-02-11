@@ -6,7 +6,7 @@
 #    By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/05 20:43:46 by bhoth             #+#    #+#              #
-#    Updated: 2020/02/02 15:32:21 by bhoth            ###   ########.fr        #
+#    Updated: 2020/02/10 21:00:08 by bhoth            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,23 +15,27 @@ SRC		:= 	main.c \
 		   	get_next_line.c \
 		   	read_map.c \
 			convert_map.c \
-			free.c
+			free.c \
+			draw.c \
+			math.c
 
 OBJ		:= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 NAME = fdf
 
-INCLUDES = fdf.h
+INCLUDES = libft/libft.a minilibx_macos/libmlx.a
+
+FLAGS = -Wall -Wextra -Werror
+
+OPENGL = -L /usr/local/lib/ -lmlx -framework OpenGL \
+	-framework AppKit
 
 OBJS = $(SRC:.c=.o)
 
-all: $(NAME)
-
-$(NAME): lib $(OBJS)
-		gcc -g -o $(NAME) $(OBJS) -L libft -lft
-
-$(OBJS): %.o : %.c $(INCLUDES)
-		gcc -Wall -Wextra -Werror -g -I./ -c $<
+all: 
+	@make -C libft/ all
+	@make -C minilibx_macos/ all
+	gcc $(SRC) -o $(NAME) $(FLAGS) $(INCLUDES) $(OPENGL)
 
 lib:
 	@make -C libft
@@ -39,10 +43,12 @@ lib:
 clean:
 	/bin/rm -f $(OBJS)
 	make -C libft clean
+	make -C minilibx_macos clean
 
 fclean: clean
 	/bin/rm -f $(NAME)
 	make -C libft fclean
+	make -C minilibx_macos clean
 
 re: fclean all
 

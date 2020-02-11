@@ -17,6 +17,7 @@ int main(int argc, char **argv)
 	map = read_map(argv[1]);
     convert_map(map);
     print_map(map);
+    draw(map);
     free_map(map);
     exit (0);
 }
