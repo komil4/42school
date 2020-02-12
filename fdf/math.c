@@ -1,3 +1,5 @@
+#include "fdf.h"
+
 float max(float n1, float n2)
 {
     if (n1 > n2)

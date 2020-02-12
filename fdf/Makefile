@@ -6,7 +6,7 @@
 #    By: bhoth <bhoth@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/05 20:43:46 by bhoth             #+#    #+#              #
-#    Updated: 2020/02/10 21:00:08 by bhoth            ###   ########.fr        #
+#    Updated: 2020/02/11 22:16:55 by bhoth            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,11 @@ SRC		:= 	main.c \
 			convert_map.c \
 			free.c \
 			draw.c \
-			math.c
+			math.c \
+			deal.c \
+			create.c \
+			text.c \
+			isometric_func.c
 
 OBJ		:= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
@@ -35,7 +39,7 @@ OBJS = $(SRC:.c=.o)
 all: 
 	@make -C libft/ all
 	@make -C minilibx_macos/ all
-	gcc $(SRC) -o $(NAME) $(FLAGS) $(INCLUDES) $(OPENGL)
+	gcc -g $(SRC) -o $(NAME) $(FLAGS) $(INCLUDES) $(OPENGL)
 
 lib:
 	@make -C libft
